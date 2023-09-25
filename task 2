@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <!-- Add your CSS styles here -->
+</head>
+<body>
+    <h1>Task Management System</h1>
+
+    <!-- Task Input Form -->
+    <form id="task-form">
+        <label for="task">Task:</label>
+        <input type="text" id="task" required>
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" required>
+        <label for="priority">Priority:</label>
+        <select id="priority" required>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Task List -->
+    <ul id="task-list">
+        <!-- Tasks will be dynamically added here using JavaScript -->
+    </ul>
+
+    <!-- JavaScript for Task Management -->
+    <script>
+        const taskForm = document.getElementById("task-form");
+        const taskList = document.getElementById("task-list");
+
+        taskForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const taskInput = document.getElementById("task");
+            const deadlineInput = document.getElementById("deadline");
+            const priorityInput = document.getElementById("priority");
+
+            const task = taskInput.value;
+            const deadline = deadlineInput.value;
+            const priority = priorityInput.value;
+
+            // Create a new task element
+            const taskElement = document.createElement("li");
+            taskElement.innerHTML = `Task: ${task}<br>Deadline: ${deadline}<br>Priority: ${priority}`;
+
+            // Add the task to the task list
+            taskList.appendChild(taskElement);
+
+            // Clear the input fields
+            taskInput.value = "";
+            deadlineInput.value = "";
+            priorityInput.value = "high";
+        });
+    </script>
+</body>
+</html>
